@@ -1,0 +1,55 @@
+<%- include('head') %>
+<%- include('menu') %>
+
+<div class="mt-4 p-5 bg-warning text-white rounded">
+  <h1><%= title %></h1>
+</div>
+
+<div class="d-flex flex-wrap flex-column flex-sm-column flex-md-row flex-lg-row">
+
+  <% data.forEach((product) => { %>
+    <%
+      let stockText, stockClass;
+      if (product.quantity === 0) {
+        stockText = 'Out of stock';
+        stockClass = 'text-danger';
+      } else if (product.quantity <= 6) {
+        stockText = 'Low stock: only ' + product.quantity + ' left';
+        stockClass = 'text-danger';
+      } else {
+        stockText = 'In stock: ' + product.quantity + ' available';
+        stockClass = 'text-success';
+      }
+    %>
+
+    <div class="card">
+      <img
+        src="/images/<%= product.id %>.jpg"
+        alt="<%= product.name %>"
+        class="product-img">
+      <br><br>
+
+      <strong><%= product.name %></strong>
+      <br><br>
+      <%= product.description %>
+      <br><br>
+
+      <button type="button" class="btn btn-warning details-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#detailsModal"
+        data-name="<%= product.name %>"
+        data-description="<%= product.description %>"
+        data-price="<%= product.price.toFixed(2) %>"
+        data-stock-text="<%= stockText %>"
+        data-stock-class="<%= stockClass %>">Show details</button>
+    </div>
+
+  <% }); %>
+
+  <%- include('detailsmodal') %>
+
+</div>
+
+<script src="/js/details.js"></script>
+
+<%- include('footer') %>

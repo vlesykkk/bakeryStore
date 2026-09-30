@@ -1,0 +1,25 @@
+.card {
+    display: inline-block;
+    width: 250px;
+    min-height: 120px;
+    background-color: #f5e7c6;
+    border: 2px dashed #c9a227;
+    vertical-align: top;
+    margin: 0;
+    padding: 5px;
+}
+
+.product-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.takenote {
+    background-color: black;
+    color: gold;
+    font-weight: bold;
+    padding: 2px 5px;
+}

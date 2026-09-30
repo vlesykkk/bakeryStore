@@ -1,0 +1,25 @@
+<div class="modal fade"
+     id="parkingModal"
+     tabindex="-1"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Parking Info — <span id="modalTopic"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalParking"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('parkingModal').addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    document.getElementById('modalTopic').textContent = button.getAttribute('data-topic');
+    document.getElementById('modalParking').textContent = button.getAttribute('data-parking');
+  });
+</script>
